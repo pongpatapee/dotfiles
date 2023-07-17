@@ -1,0 +1,3 @@
+[submodule "/home/dan/.config/nvim"]
+	path = /home/dan/.config/nvim
+	url = https://github.com/pongpatapee/nvim-config
