@@ -5,7 +5,7 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:FiraMono Nerd Font 14
+font pango:JetBrainsMono Nerd Font 14
 # font pango:DejaVu Sans MNerd Font Mono Regular 14
 #font pango:DejaVu Sans Mono 8
 
@@ -201,7 +201,7 @@ bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-  status_command i3status
+  status_command i3blocks
 }
 
 
@@ -216,10 +216,11 @@ bindsym $mod+Control+Right workspace next
 bindsym $mod+Control+Left workspace prev
 
 # Define monitor layout
-exec_always --no-startup-id xrandr --output eDP-1 --mode 1920x1200 --pos 0x0 --rotate normal --output DisplayPort-1 --off --output DisplayPort-2 --off --output DisplayPort-3 --off --output DisplayPort-4 --off --output DisplayPort-5 --off --output DisplayPort-6 --off --output DisplayPort-7 --off --output DisplayPort-8 --off --output eDP-1-0 --off --output DisplayPort-1-0 --off --output HDMI-A-1-0 --primary --mode 1920x1080 --pos 1920x120 --rotate normal
+exec_always --no-startup-id xrandr --output eDP-1 --mode 1920x1200 --pos 0x0 --rotate normal --output DisplayPort-1 --off --output DisplayPort-2 --off --output DisplayPort-3 --off --output DisplayPort-4 --off --output DisplayPort-5 --off --output DisplayPort-6 --off --output DisplayPort-7 --off --output DisplayPort-8 --off --output eDP-1-0 --off --output DisplayPort-1-0 --off --output HDMI-A-1-0 --primary --mode 1920x1080 --rate 143.98 --pos 1920x120 --rotate normal
 
 # Set wallpaper
-exec_always --no-startup-id feh --bg-fill ~/Pictures/wallpapers/wallpaper.png
+exec_always --no-startup-id feh --bg-fill ~/Pictures/Wallpapers/wallpaper.png
+# exec_always nitrogen --restore
 
 # configure lockscreen 
 set $lock_cmd "i3lock -c 000000"
