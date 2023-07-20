@@ -141,6 +141,7 @@ alias tmuxconfig="cd ~/.config/tmux"
 alias i3config="cd ~/.config/i3"
 alias polybarconfig="cd ~/.config/polybar"
 alias touchpadconfig="cd /etc/X11/xorg.conf.d"
+alias desktopEntries="cd ~/.local/share/applications"
 
 # Managing dotfiles the hacker news way (article: https://www.atlassian.com/git/tutorials/dotfiles)
 alias dotfile_git='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
