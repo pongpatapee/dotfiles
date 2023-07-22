@@ -1,0 +1,41 @@
+separator_block_width=15
+markup=none
+SCRIPT_DIR=~/.config/i3blocks/scripts
+
+[volume]
+command=sh -c "$SCRIPT_DIR/volume-pipewire/volume-pipewire"
+#label=♪
+label=VOL
+interval=repeat
+signal=10
+#STEP=5%
+
+[memory]
+# command=sh -c "$SCRIPT_DIR/memory/memory"
+label=MEM
+# separator=false
+interval=30
+
+[cpu_usage]
+command=sh -c "$SCRIPT_DIR/cpu_usage2/cpu_usage2"
+# label=CPU
+# label=
+markup=pango
+interval=persist
+min_width=CPU 100.00%
+#separator=false
+
+[temperature]
+command=sh -c "$SCRIPT_DIR/temperature/temperature"
+interval=10
+
+[battery]
+command=sh -c "$SCRIPT_DIR/battery2/battery2"
+markup=pango
+label=BAT
+#label=⚡
+interval=30
+
+[time]
+command=date '+%Y-%m-%d %H:%M:%S'
+interval=5

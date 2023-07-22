@@ -1,0 +1,8 @@
+# pack-refs with: peeled fully-peeled sorted 
+a209192fb59481370f52c1ee650d81b5febd3f7b refs/remotes/origin/adoc
+fc2c10551c32558be44226c6924d64bae611e32c refs/remotes/origin/master
+d887c83e2a900922c92b44f798bd4483f0940979 refs/remotes/origin/next
+4005c35e70117f00d6555fd53e3a4697a755c2ed refs/remotes/origin/revert-266-backlight
+e36158287eb0a7809d81fc5f6992eaaa6676c7f3 refs/tags/v1.4.0
+^19ef96192683ffe2f665f89a13e8e5c327079f71
+22d448731cf1c3c5dcd05ad6a609531eddd29401 refs/tags/v2.0.0
