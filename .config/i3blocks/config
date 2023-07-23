@@ -2,13 +2,23 @@ separator_block_width=15
 markup=none
 SCRIPT_DIR=~/.config/i3blocks/scripts
 
+
+# [volume-pipewire]
+# command=sh -c "$SCRIPT_DIR/volume-pipewire/volume-pipewire"
+# label=VOL
+# interval=persist
+# SUBSCRIBE=1
+# USE_ALSA_NAME=1
+
 [volume]
-command=sh -c "$SCRIPT_DIR/volume-pipewire/volume-pipewire"
+command=sh -c "$SCRIPT_DIR/volume/volume"
 #label=♪
 label=VOL
-interval=repeat
+interval=once
 signal=10
 #STEP=5%
+#MIXER=[determined automatically]
+#SCONTROL=[determined automatically]
 
 [memory]
 # command=sh -c "$SCRIPT_DIR/memory/memory"
@@ -32,7 +42,7 @@ interval=10
 [battery]
 command=sh -c "$SCRIPT_DIR/battery2/battery2"
 markup=pango
-label=BAT
+label=BAT 
 #label=⚡
 interval=30
 
