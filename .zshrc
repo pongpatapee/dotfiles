@@ -77,7 +77,7 @@ plugins=(
   web-search
 )
 plugins+=(zsh-vi-mode)
-ZVM_VI_INSERT_ESCAPE_BINDKEY=kj
+ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
 
 source $ZSH/oh-my-zsh.sh
 
@@ -170,4 +170,3 @@ alias code="code --enable-ozone --ozone-platform=wayland"
 
 # Managing dotfiles the hacker news way (article: https://www.atlassian.com/git/tutorials/dotfiles)
 alias dotfile_git='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
-
