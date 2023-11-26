@@ -227,6 +227,8 @@ workspace $ws10 output $monitor_left
 workspace $ws1 output $monitor_right
 # exec_always --no-startup-id xrandr --output eDP-1 --mode 2560x1600 --rate 120 --pos 0x0 --rotate normal --output DisplayPort-1 --off --output DisplayPort-2 --off --output DisplayPort-3 --off --output DisplayPort-4 --off --output DisplayPort-5 --off --output DisplayPort-6 --off --output DisplayPort-7 --off --output DisplayPort-8 --off --output eDP-1-0 --off --output DisplayPort-1-0 --off --output HDMI-A-1-0 --primary --mode 1920x1080 --rate 240 --pos 2560x260 --rotate normal
 exec_always --no-startup-id xrandr --output eDP-1 --mode 1920x1200 --rate 120 --pos 0x0 --rotate normal --output DisplayPort-1 --off --output DisplayPort-2 --off --output DisplayPort-3 --off --output DisplayPort-4 --off --output DisplayPort-5 --off --output DisplayPort-6 --off --output DisplayPort-7 --off --output DisplayPort-8 --off --output eDP-1-0 --off --output DisplayPort-1-0 --off --output HDMI-A-1-0 --primary --mode 1920x1080 --rate 240 --pos 1920x60 --rotate normal
+# auto change monitor output on reload
+exec_always --no-startup-id autorandr --change --skip-option crtc
 
 
 # Set wallpaper
@@ -248,4 +250,6 @@ exec_always --no-startup-id picom -b
 # Password manager in chrome 
 exec_always --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=secrets
 
-
+# Screenshot
+bindsym Print exec flameshot full
+bindsym $mod+Shift+s exec flameshot gui
