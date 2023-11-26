@@ -153,10 +153,19 @@ command=~/.config/i3blocks/scripts/endeavourScripts/ppd-status
 interval=5
 color=#407437
 
+[calendar]
+command=~/.config/i3blocks/scripts/calendar/calendar
+interval=1
+LABEL= 
+DATEFMT=+%a %d %b %Y
+# SHORTFMT=+%H:%M:%S
+# HEIGHT=180
+# WIDTH=220
+
+
 [time]
 # label=
-command=date '+%a %d %b %H:%M:%S'
-# command=date '+%Y-%m-%d %H:%M:%S'
+command=date '+%r'
 interval=1
 
 [shutdown_menu]
