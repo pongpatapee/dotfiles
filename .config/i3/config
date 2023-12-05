@@ -97,7 +97,7 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # focus the child container
-bindsym $mod+b focus child
+bindsym $mod+z focus child
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
@@ -207,6 +207,8 @@ bar {
 #############
 # Custom
 #############
+# Remove title bar from windows
+for_window [class="^.*"] border pixel 2
 
 # set gaps
 gaps inner 10
@@ -244,12 +246,13 @@ exec_always --no-startup-id autorandr --change --skip-option crtc
 exec_always --no-startup-id feh --bg-fill $HOME/Pictures/Wallpapers/wallpaper.jpg
 
 # configure lockscreen 
-set $lock_cmd "i3lock -c 000000"
+set $lock_cmd "i3lock -c 3b3b3b"
 # set $lock_cmd "~/.config/i3blocks/scripts/endeavourScripts/blur-lock"
 bindsym $mod+x exec $lock_cmd
 bindsym $mod+Shift+x exec systemctl suspend
 # auto lock screen
-exec "xautolock -detectsleep -time 20 -locker \"i3lock -c 000000\""
+# exec "xautolock -detectsleep -time 20 -locker \"i3lock -c 3b3b3b\""
+exec_always xss-lock --transfer-sleep-lock -- 'i3lock -c 3b3b3b' --nofork
 
 # Fading transitions
 # exec_always picom -f
