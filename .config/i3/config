@@ -40,10 +40,10 @@ bindsym $mod+Return exec kitty
 # kill focused window
 bindsym $mod+q kill
 
-# start dmenu (a program launcher)
-# bindsym $mod+d exec --no-startup-id dmenu_run
-bindsym $mod+d exec --no-startup-id "rofi -modi drun,run -show drun"
-bindsym $alt+space exec --no-startup-id "rofi -modi drun,run -show drun"
+# bindsym $mod+d exec --no-startup-id "rofi -modi drun,run -show drun"
+# bindsym $alt+space exec --no-startup-id "rofi -modi drun,run -show drun"
+bindsym $mod+d exec --no-startup-id ~/.config/rofi/scripts/launcher_t1
+bindsym $alt+space exec --no-startup-id ~/.config/rofi/scripts/launcher_t1
 
 # change focus
 bindsym $mod+h focus left
@@ -227,15 +227,29 @@ bindsym $mod+Shift+greater move workspace to output right
 bindsym $mod+Shift+less move workspace to output left
 
 # Alt/super-tab behavior
-bindsym $mod+Tab exec --no-startup-id rofi -modi combi -combi-modi window -show combi
-bindsym $alt+Tab workspace next
-bindsym $alt+Shift+Tab workspace prev
+bindsym $mod+Tab exec --no-startup-id rofi -show window -theme $HOME/.config/rofi/launchers/type-1/style-6.rasi
+bindsym $alt+Tab workspace back_and_forth
+# bindsym $alt+Shift+Tab workspace prev
+
+# Minimize behavior with scratchpad workspace 
+## Minimize
+bindsym $mod+m move scratchpad
+## Maximize
+bindsym $mod+Shift+M scratchpad show, floating disable
 
 # Define monitor layout
 set $monitor_left "eDP-1"
 set $monitor_right "HDMI-A-1-0"
 workspace $ws10 output $monitor_left
 workspace $ws1 output $monitor_right
+workspace $ws2 output $monitor_right
+workspace $ws3 output $monitor_right
+workspace $ws4 output $monitor_right
+workspace $ws5 output $monitor_right
+workspace $ws6 output $monitor_right
+workspace $ws7 output $monitor_right
+workspace $ws8 output $monitor_right
+workspace $ws9 output $monitor_right
 # exec_always --no-startup-id xrandr --output eDP-1 --mode 2560x1600 --rate 120 --pos 0x0 --rotate normal --output DisplayPort-1 --off --output DisplayPort-2 --off --output DisplayPort-3 --off --output DisplayPort-4 --off --output DisplayPort-5 --off --output DisplayPort-6 --off --output DisplayPort-7 --off --output DisplayPort-8 --off --output eDP-1-0 --off --output DisplayPort-1-0 --off --output HDMI-A-1-0 --primary --mode 1920x1080 --rate 240 --pos 2560x260 --rotate normal
 exec_always --no-startup-id xrandr --output eDP-1 --mode 1920x1200 --rate 120 --pos 0x0 --rotate normal --output DisplayPort-1 --off --output DisplayPort-2 --off --output DisplayPort-3 --off --output DisplayPort-4 --off --output DisplayPort-5 --off --output DisplayPort-6 --off --output DisplayPort-7 --off --output DisplayPort-8 --off --output eDP-1-0 --off --output DisplayPort-1-0 --off --output HDMI-A-1-0 --primary --mode 1920x1080 --rate 240 --pos 1920x60 --rotate normal
 # auto change monitor output on reload
@@ -243,7 +257,7 @@ exec_always --no-startup-id autorandr --change --skip-option crtc
 
 
 # Set wallpaper
-exec_always --no-startup-id feh --bg-fill $HOME/Pictures/Wallpapers/wallpaper.jpg
+exec_always --no-startup-id feh --bg-fill $HOME/Pictures/Wallpapers/wallpaper.*
 
 # configure lockscreen 
 set $lock_cmd "i3lock -c 3b3b3b"
@@ -252,7 +266,7 @@ bindsym $mod+x exec $lock_cmd
 bindsym $mod+Shift+x exec systemctl suspend
 # auto lock screen
 # exec "xautolock -detectsleep -time 20 -locker \"i3lock -c 3b3b3b\""
-exec_always xss-lock --transfer-sleep-lock -- 'i3lock -c 3b3b3b' --nofork
+exec_always --no-startup-id xss-lock --transfer-sleep-lock -- 'i3lock -c 3b3b3b' --nofork
 
 # Fading transitions
 # exec_always picom -f
