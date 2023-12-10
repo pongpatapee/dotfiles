@@ -91,7 +91,7 @@ bindsym $mod+e layout toggle split
 bindsym $mod+Shift+f floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+# bindsym $mod+space focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -238,8 +238,8 @@ bindsym $mod+m move scratchpad
 bindsym $mod+Shift+M scratchpad show, floating disable
 
 # Define monitor layout
-set $monitor_left "eDP-1"
-set $monitor_right "HDMI-A-1-0"
+set $monitor_left "eDP"
+set $monitor_right "HDMI-A-0"
 workspace $ws10 output $monitor_left
 workspace $ws1 output $monitor_right
 workspace $ws2 output $monitor_right
@@ -251,7 +251,7 @@ workspace $ws7 output $monitor_right
 workspace $ws8 output $monitor_right
 workspace $ws9 output $monitor_right
 # exec_always --no-startup-id xrandr --output eDP-1 --mode 2560x1600 --rate 120 --pos 0x0 --rotate normal --output DisplayPort-1 --off --output DisplayPort-2 --off --output DisplayPort-3 --off --output DisplayPort-4 --off --output DisplayPort-5 --off --output DisplayPort-6 --off --output DisplayPort-7 --off --output DisplayPort-8 --off --output eDP-1-0 --off --output DisplayPort-1-0 --off --output HDMI-A-1-0 --primary --mode 1920x1080 --rate 240 --pos 2560x260 --rotate normal
-exec_always --no-startup-id xrandr --output eDP-1 --mode 1920x1200 --rate 120 --pos 0x0 --rotate normal --output DisplayPort-1 --off --output DisplayPort-2 --off --output DisplayPort-3 --off --output DisplayPort-4 --off --output DisplayPort-5 --off --output DisplayPort-6 --off --output DisplayPort-7 --off --output DisplayPort-8 --off --output eDP-1-0 --off --output DisplayPort-1-0 --off --output HDMI-A-1-0 --primary --mode 1920x1080 --rate 240 --pos 1920x60 --rotate normal
+exec_always --no-startup-id xrandr --output eDP --mode 1920x1200 --rate 120 --pos 0x0 --rotate normal --output DisplayPort-0 --off --output HDMI-A-0 --mode 1920x1080 --rate 240 --pos 1920x60 --rotate normal --output eDP-1-1 --off --output DisplayPort-1-1 --off --output DisplayPort-1-2 --off --output DisplayPort-1-3 --off --output DisplayPort-1-4 --off --output DisplayPort-1-5 --off --output DisplayPort-1-6 --off --output DisplayPort-1-7 --off --output DisplayPort-1-8 --off
 # auto change monitor output on reload
 exec_always --no-startup-id autorandr --change --skip-option crtc
 
@@ -282,3 +282,11 @@ exec --no-startup-id /usr/libexec/gsd-xsettings
 # Screenshot
 bindsym Print exec flameshot full
 bindsym $mod+Shift+s exec flameshot gui
+
+# keyboard layout/language
+# exec_always --no-startup-id "setxkbmap -model pc104 -layout us,th -option grp:alt_shift_toggle"
+# exec --no-startup-id setxkbmap -layout us, th
+bindsym $mod+space exec --no-startup-id /home/dan/.config/i3/scripts/toggle_language.sh
+
+
+
