@@ -267,14 +267,12 @@ exec_always --no-startup-id vibrant-cli HDMI-A-0 1.35
 exec_always --no-startup-id feh --bg-fill $HOME/Pictures/Wallpapers/wallpaper.*
 
 # configure lockscreen 
-set $lock_cmd "i3lock -c 3b3b3b"
-# set $lock_cmd "~/.config/i3blocks/scripts/endeavourScripts/blur-lock"
-bindsym $mod+x exec $lock_cmd
+# set $lock i3lock -i /path/to/image
+set $lock i3lock -c 3b3b3b
+exec_always --no-startup-id killall xss-lock; xss-lock --transfer-sleep-lock -- $lock --nofork
+bindsym $mod+x exec $lock
 bindsym $mod+Shift+x exec systemctl suspend
 
-# auto lock screen
-# exec "xautolock -detectsleep -time 20 -locker \"i3lock -c 3b3b3b\""
-exec_always --no-startup-id xss-lock --transfer-sleep-lock -- 'i3lock -c 3b3b3b' --nofork
 
 # Fading transitions
 # exec_always picom -f

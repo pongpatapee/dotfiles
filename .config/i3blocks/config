@@ -77,7 +77,7 @@ color=#717171
 # The script may be called with a optional argument to set the alert
 # (defaults to 10 for 10%).
 [disk]
-label=
+label= 
 instance=/
 command=~/.config/i3blocks/scripts/endeavourScripts/disk
 interval=30

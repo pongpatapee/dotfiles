@@ -119,6 +119,9 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+# adding GO to path
+export PATH=$PATH:/usr/local/go/bin
+
 
 # Starship prompt
 eval "$(starship init zsh)"
@@ -130,10 +133,11 @@ alias nvim-lazy="NVIM_APPNAME=LazyVim nvim"
 alias nvim-kick="NVIM_APPNAME=kickstart nvim"
 alias nvim-chad="NVIM_APPNAME=NvChad nvim"
 alias nvim-astro="NVIM_APPNAME=AstroNvim nvim"
+alias nvim-scratch="NVIM_APPNAME=ScratchNvim nvim"
 
 function nvims() {
-  items=("default" "kickstart" "LazyVim" "NvChad" "AstroNvim")
-  config=$(printf "%s\n" "${items[@]}" | fzf --prompt=" Neovim Config  " --height=~50% --layout=reverse --border --exit-0)
+  items=("default" "kickstart" "LazyVim" "NvChad" "AstroNvim" "ScratchNvim")
+  config=$(printf "%s\n" "${items[@]}" | fzf --prompt=" Neovim Config  " --height=50% --layout=reverse --border --exit-0)
   if [[ -z $config ]]; then
     echo "Nothing selected"
     return 0
