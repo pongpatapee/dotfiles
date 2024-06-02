@@ -172,8 +172,3 @@ alias settings="env XDG_CURRENT_DESKTOP=GNOME gnome-control-center"
 # alias code="code --enable-ozone --ozone-platform=wayland"
 
 
-# Managing dotfiles the hacker news way (article: https://www.atlassian.com/git/tutorials/dotfiles)
-alias dotfile_git='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
-alias lazydotfile="lazygit --git-dir=$HOME/dotfiles --work-tree=$HOME"
-
-
