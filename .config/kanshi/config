@@ -1,9 +1,0 @@
-profile laptop {
-  output eDP-2 mode 2560x1600@120 scale 1.5 position 0,0
-}
-
-profile dualMonitor {
-  output eDP-2 mode 2560x1600@120 scale 1.5 position 0,0
-  output HDMI-A-1 mode 1920x1080@240 scale 1 position 1706,0
-}
-
