@@ -1,3 +1,4 @@
-[submodule "/home/dan/.config/nvim"]
-	path = /home/dan/.config/nvim
-	url = https://github.com/pongpatapee/nvim-config
+[submodule "nvim"]
+	path = .config/nvim
+	url = https://github.com/pongpatapee/nvim-config.git
+  branch = lazyvim
