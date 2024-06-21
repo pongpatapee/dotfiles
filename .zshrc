@@ -94,6 +94,13 @@ function nvims() {
 }
 
 
+##########################
+# cd with lf file manager
+##########################
+function lfcd() {
+  cd $(command lf -print-last-dir)
+}
+
 
 ###########
 # Env Vars
