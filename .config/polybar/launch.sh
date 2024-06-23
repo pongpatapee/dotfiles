@@ -7,13 +7,8 @@ polybar-msg cmd quit
 # killall -q polybar
 
 # Launch bar1 and bar2
-echo "---" | tee -a /tmp/polybar-main.log
-for m in $(polybar --list-monitors | cut -d":" -f1); do
-	# polybar main -c ~/.config/polybar/config.ini 2>&1 | tee -a /tmp/polybar-main.log &
-	MONITOR=$m polybar --reload main -c ~/.config/polybar/config.ini 2>&1
-	# MONITOR=$m polybar --reload main &
-done
-
+echo "---" | tee -a /tmp/polybar1.log /tmp/polybar2.log
+polybar main 2>&1 | tee -a /tmp/polybar1.log &
 disown
 
 echo "Bars launched..."
