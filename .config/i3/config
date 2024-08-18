@@ -63,6 +63,10 @@ bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
+# Another change focus alternative 
+bindsym $alt+a focus left
+bindsym $alt+d focus right
+
 # move focused window
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
@@ -290,9 +294,10 @@ bindsym $mod+space exec --no-startup-id /home/dan/.config/i3/scripts/toggle_lang
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # Execute applications in workspace
-assign [class="chrome"] 2
+# assign [class="chrome"] 2
 assign [class="kitty"] 3
 assign [class="discord"] 5
+assign [class="spotify"] 9
 
 exec google-chrome
 exec kitty
