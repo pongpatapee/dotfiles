@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+# https://itsfoss.com/best-command-line-games-linux/
+
+declare -A games
+
+games=(
+  ["tetris"]=bastet
+  ["space_invaders"]=ninvaders
+  ["snake"]=nsnake
+  ["greed"]=greed
+  ["atc"]=atc
+  ["2048"]="$HOME/.local/bin/2048"
+  ["sudoku"]=nudoku
+  ["moon-buggy"]=moon-buggy
+)
+
+# for game in "${!games[@]}"; do
+#   echo "$game - ${games[$game]}"
+# done
+
+# Select the game using fzf
+game=$(printf "%s\n" "${!games[@]}" | fzf --prompt="  Games: " --height=~50% --layout=reverse --border --exit-0)
+
+# If a game is selected, print the path/program
+if [ -n "$game" ]; then
+  echo "game: $game, path/program: ${games[$game]}"
+  # Run the selected game
+  "${games[$game]}"
+else
+  echo "No game selected."
+fi

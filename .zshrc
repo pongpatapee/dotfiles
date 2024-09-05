@@ -80,9 +80,10 @@ alias nvim-kick="NVIM_APPNAME=kickstart nvim"
 alias nvim-chad="NVIM_APPNAME=NvChad nvim"
 alias nvim-astro="NVIM_APPNAME=AstroNvim nvim"
 alias nvim-scratch="NVIM_APPNAME=ScratchNvim nvim"
+alias nvim-wh1fty="NVIM_APPNAME=wh1ftyNvim nvim"
 
 function nvims() {
-  items=("default" "kickstart" "LazyVim" "NvChad" "AstroNvim" "ScratchNvim")
+  items=("default" "kickstart" "LazyVim" "NvChad" "AstroNvim" "ScratchNvim" "wh1ftyNvim")
   config=$(printf "%s\n" "${items[@]}" | fzf --prompt=" Neovim Config  " --height=50% --layout=reverse --border --exit-0)
   if [[ -z $config ]]; then
     echo "Nothing selected"
@@ -123,6 +124,8 @@ alias touchpadconfig="cd /etc/X11/xorg.conf.d"
 alias desktopEntries="cd ~/.local/share/applications"
 alias settings="env XDG_CURRENT_DESKTOP=GNOME gnome-control-center"
 # alias code="code --enable-ozone --ozone-platform=wayland"
+alias game-selector="~/scripts/game-selector"
+alias screen-saver="~/scripts/screen-savers"
 
 
 

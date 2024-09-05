@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+declare -A screen_savers
+
+screen_savers=(
+  ["cmatrix"]=cmatrix
+  ["cbonsai"]="cbonsai -S"
+  ["pipes"]="pipes.sh"
+)
+
+ss=$(printf "%s\n" "${!screen_savers[@]}" | fzf --prompt="Screen Savers: " --height=~50% --layout=reverse --border --exit-0)
+
+if [ -n "$ss" ]; then
+  eval "${screen_savers[$ss]}"
+else
+  echo "No screen savers selected"
+fi

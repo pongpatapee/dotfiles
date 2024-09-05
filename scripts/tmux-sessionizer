@@ -3,7 +3,10 @@
 if [[ $# -eq 1 ]]; then
   selected=$1
 else
-  selected=$(find ~/personal/coding/projects/ ~/personal/coding/learning/ ~/personal/coding/ ~/dotfiles/ ~/dotfiles/.config/ ~/personal/ ~/ -mindepth 1 -maxdepth 1 -type d | fzf)
+  directories=$(find ~/personal/coding/projects/ ~/personal/coding/learning/ ~/personal/coding/ ~/dotfiles/ ~/dotfiles/.config/ ~/personal/ ~/ -mindepth 1 -maxdepth 1 -type d)
+  tmux_sessions=$(tmux list-session -F "#{session_name}" 2>/dev/null) # 2>/dev/null redirects stderr to void
+
+  selected=$( (echo "$tmux_sessions" && echo "$directories") | fzf)
 fi
 
 if [[ -z $selected ]]; then
