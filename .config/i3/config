@@ -240,23 +240,25 @@ bindsym $mod+m move scratchpad
 ## Maximize
 bindsym $mod+Shift+m scratchpad show, floating disable
 
-# For 2 monitor setup (e.g., laptop plus monitor)
-## Define monitor layout
-set $monitor1 "DP-0"
-# set $monitor_left "eDP"
-# set $monitor_right "HDMI-A-0"
-# workspace $ws10 output $monitor_left
-# workspace $ws1 output $monitor_right
-# workspace $ws2 output $monitor_right
-# workspace $ws3 output $monitor_right
-# workspace $ws4 output $monitor_right
-# workspace $ws5 output $monitor_right
-# workspace $ws6 output $monitor_right
-# workspace $ws7 output $monitor_right
-# workspace $ws8 output $monitor_right
-# workspace $ws9 output $monitor_right
+## Define monitor layout for 2 monitor setup
+# set $monitor1 "DP-0"
+set $monitor_left "HDMI-0"
+set $monitor_right "DP-0"
+workspace $ws10 output $monitor_left
+workspace $ws1 output $monitor_right
+workspace $ws2 output $monitor_right
+workspace $ws3 output $monitor_right
+workspace $ws4 output $monitor_right
+workspace $ws5 output $monitor_right
+workspace $ws6 output $monitor_right
+workspace $ws7 output $monitor_right
+workspace $ws8 output $monitor_right
+workspace $ws9 output $monitor_right
 
-exec_always --no-startup-id xrandr --output $monitor1 --mode 1920x1080 --rate 240 --pos 0x0 --rotate normal
+exec_always --no-startup-id xrandr \
+        --output $monitor_right --primary --mode 1920x1080 --pos 1920x0 --rotate normal --rate 240 \
+        --output $monitor_left --mode 1920x1080 --pos 0x0 --rotate normal --rate 100 \
+
 # # auto change monitor output on reload
 # exec_always --no-startup-id autorandr --change --skip-option crtc
 
