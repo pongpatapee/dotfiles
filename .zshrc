@@ -81,6 +81,7 @@ alias nvim-chad="NVIM_APPNAME=NvChad nvim"
 alias nvim-astro="NVIM_APPNAME=AstroNvim nvim"
 alias nvim-scratch="NVIM_APPNAME=ScratchNvim nvim"
 alias nvim-wh1fty="NVIM_APPNAME=wh1ftyNvim nvim"
+alias nvim-mylazyvim="NVIM_APPNAME=mylazyvim nvim"
 
 function nvims() {
   items=("default" "kickstart" "LazyVim" "NvChad" "AstroNvim" "ScratchNvim" "wh1ftyNvim")
@@ -92,14 +93,6 @@ function nvims() {
     config=""
   fi
   NVIM_APPNAME=$config nvim $@
-}
-
-
-##########################
-# cd with lf file manager
-##########################
-function lfcd() {
-  cd $(command lf -print-last-dir)
 }
 
 
@@ -126,6 +119,26 @@ alias settings="env XDG_CURRENT_DESKTOP=GNOME gnome-control-center"
 # alias code="code --enable-ozone --ozone-platform=wayland"
 alias game-selector="~/scripts/game-selector"
 alias screen-saver="~/scripts/screen-savers"
+
+
+##########################
+# cd with lf file manager
+##########################
+function lfcd() {
+    cd $(command lf -print-last-dir)
+}
+
+#############
+# cd with fzf
+#############
+function fcd() {
+    path_to_cd=$(find ~/ -type d -not -path "*.git*" | fzf)
+    if [[ -z $path_to_cd ]]; then
+        path_to_cd=$(pwd)
+    fi
+
+    cd $path_to_cd
+}
 
 
 
