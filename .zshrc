@@ -67,6 +67,7 @@ unset __conda_setup
 
 # adding GO to path
 export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:$HOME/go/bin
 
 
 # Starship prompt
