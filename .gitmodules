@@ -1,7 +1,6 @@
 [submodule ".config/nvim"]
 	path = .config/nvim
 	url = https://github.com/pongpatapee/nvim-config.git
-  branch = lazyvim
 [submodule ".config/tmux"]
 	path = .config/tmux
 	url = https://github.com/pongpatapee/tmux-config.git
