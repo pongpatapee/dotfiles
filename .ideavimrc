@@ -1,0 +1,122 @@
+" =========================
+"  General Settings
+" =========================
+let mapleader=" "
+
+" Clear search highlight on <Esc>
+nnoremap <Esc> :nohlsearch<CR>
+
+" =========================
+"  Navigation Enhancements
+" =========================
+" Soft line movement
+nnoremap j gj
+nnoremap k gk
+
+" Half-page jumping centers cursor
+nnoremap <C-d> <C-d>zz
+nnoremap <C-u> <C-u>zz
+
+" Window navigation
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+" Resize windows
+nnoremap <C-Left>  <C-w><
+nnoremap <C-Right> <C-w>>
+nnoremap <C-Up>    <C-w>+
+nnoremap <C-Down>  <C-w>-
+
+" =========================
+"  Buffers / Windows / Splits
+" =========================
+nnoremap <leader>| :vsplit<CR>
+nnoremap <leader>\ :vsplit<CR>
+nnoremap <leader>- :split<CR>
+nnoremap <leader>_ :split<CR>
+
+nnoremap <leader>bd :action CloseContentEditor<CR>
+nnoremap <leader>bo :action CloseAllEditorsButActive<CR>
+nnoremap <leader>wd :action CloseAllEditors<CR>
+
+" =========================
+"  Tabs
+" =========================
+nnoremap <leader>tt :action NewTab<CR>
+nnoremap <S-l> :action NextTab<CR>
+nnoremap <S-h> :action PreviousTab<CR>
+nnoremap <leader>to :action CloseAllTabsButActive<CR>
+
+" =========================
+"  Editing Actions
+" =========================
+nnoremap K :action QuickDocumentation<CR>
+nnoremap <leader>cr :action RenameElement<CR>
+nnoremap <leader>ca :action ShowIntentionActions<CR>
+nnoremap <leader>cf :action ReformatCode<CR>
+
+" Indent/outdent (Visual Mode)
+vnoremap > >gv
+vnoremap < <gv
+
+" =========================
+"  Jumplist / Clipboard
+" =========================
+nnoremap <leader>p "+p
+nnoremap <leader>y "+y
+
+vnoremap <leader>p "+p
+vnoremap <leader>y "+y
+
+" Visual-mode Y yanks line, stays in visual
+vnoremap y ygvg<Esc>
+
+" =========================
+"  Number toggle
+" =========================
+nnoremap <leader>rn :set rnu!<CR>
+
+" =========================
+"  File / Navigation
+" =========================
+" Explorer sidebar
+nnoremap <leader>E :action ActivateProjectToolWindow<CR>
+nnoremap <leader>e :action ToggleSideBar<CR>
+
+" Search
+nnoremap <leader>/ :action FindInPath<CR>
+nnoremap <leader>ff :action SearchEverywhere<CR>
+
+" Go to symbol
+nnoremap <leader>ss :action GotoSymbol<CR>
+
+" Reveal in filesystem
+nnoremap <leader>gf :action RevealInExplorer<CR>
+
+" =========================
+"  Harpoon replacement via JetBrains Bookmarks
+" =========================
+nnoremap <leader>ha :action ToggleBookmark<CR>
+nnoremap <leader>hf :action ShowBookmarks<CR>
+nnoremap <leader>he :action EditBookmarks<CR>
+
+" Numbered bookmarks (shortcut bookmark N)
+nnoremap <leader>1 :action GotoBookmark1<CR>
+nnoremap <leader>2 :action GotoBookmark2<CR>
+nnoremap <leader>3 :action GotoBookmark3<CR>
+nnoremap <leader>4 :action GotoBookmark4<CR>
+nnoremap <leader>5 :action GotoBookmark5<CR>
+nnoremap <leader>6 :action GotoBookmark6<CR>
+nnoremap <leader>7 :action GotoBookmark7<CR>
+nnoremap <leader>8 :action GotoBookmark8<CR>
+nnoremap <leader>9 :action GotoBookmark9<CR>
+nnoremap <leader>0 :action GotoBookmark0<CR>
+
+" =========================
+"  Insert Mode
+" =========================
+inoremap jk <Esc>
+inoremap <C-v> <C-r>+
+
