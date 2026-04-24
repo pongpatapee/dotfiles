@@ -52,14 +52,14 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/dan/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('/Users/dan/miniforge3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/home/dan/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/dan/miniconda3/etc/profile.d/conda.sh"
+    if [ -f "/Users/dan/miniforge3/etc/profile.d/conda.sh" ]; then
+        . "/Users/dan/miniforge3/etc/profile.d/conda.sh"
     else
-        export PATH="/home/dan/miniconda3/bin:$PATH"
+        export PATH="/Users/dan/miniforge3/bin:$PATH"
     fi
 fi
 unset __conda_setup
@@ -144,3 +144,27 @@ function fcd() {
 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# >>> mamba initialize >>>
+# !! Contents within this block are managed by 'mamba shell init' !!
+export MAMBA_EXE='/Users/dan/miniforge3/bin/mamba';
+export MAMBA_ROOT_PREFIX='/Users/dan/miniforge3';
+__mamba_setup="$("$MAMBA_EXE" shell hook --shell zsh --root-prefix "$MAMBA_ROOT_PREFIX" 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__mamba_setup"
+else
+    alias mamba="$MAMBA_EXE"  # Fallback on help from mamba activate
+fi
+unset __mamba_setup
+# <<< mamba initialize <<<
+
+export PATH="/Library/TeX/texbin:$PATH"
+
+# opencode
+export PATH=/Users/dan/.opencode/bin:$PATH
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+. "$HOME/.local/bin/env"
