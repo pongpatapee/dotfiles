@@ -1,4 +1,45 @@
-# Path to your oh-my-zsh installation.
+# Shared between macOS and Linux.
+# Machine-specific settings and secrets go in ~/.zshrc.local (not in this repo).
+
+#######
+# PATH
+#######
+# Set early so oh-my-zsh, fzf and starship can find their binaries.
+# Entries that don't exist on the current machine are dropped automatically.
+typeset -U path   # keep entries unique
+export JAVA_HOME=$HOME/.jdks/openjdk-23.0.1
+
+path=(
+  $HOME/.local/bin
+  $HOME/.cargo/bin
+  $HOME/.opencode/bin
+  $HOME/go/bin
+  /usr/local/go/bin
+  $JAVA_HOME/bin
+  $path
+)
+
+case "$OSTYPE" in
+  darwin*)
+    [[ -x /opt/homebrew/bin/brew ]] && eval "$(/opt/homebrew/bin/brew shellenv)"
+    path+=(/Library/TeX/texbin)
+    ;;
+  linux*)
+    export ANDROID_HOME=$HOME/Android/Sdk
+    path+=(/opt/android-studio/bin)
+    ;;
+esac
+
+path=($^path(N-/))   # drop directories that don't exist (follows symlinks)
+[[ -d $JAVA_HOME ]] || unset JAVA_HOME
+
+# Optional env files some installers drop in
+[[ -f $HOME/.local/bin/env ]] && . "$HOME/.local/bin/env"
+
+
+############
+# oh-my-zsh
+############
 export ZSH="$HOME/.oh-my-zsh"
 
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
@@ -43,35 +84,20 @@ setopt hist_find_no_dups
 
 # Shell integration
 # Set up fzf key bindings and fuzzy completion
-source <(fzf --zsh)
+(( $+commands[fzf] )) && source <(fzf --zsh)
 
 # Completion styling
 zstyle ':completion:*' menu no
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/dan/miniforge3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/Users/dan/miniforge3/etc/profile.d/conda.sh" ]; then
-        . "/Users/dan/miniforge3/etc/profile.d/conda.sh"
-    else
-        export PATH="/Users/dan/miniforge3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
-# adding GO to path
-export PATH=$PATH:/usr/local/go/bin
-export PATH=$PATH:$HOME/go/bin
-
-
 # Starship prompt
-eval "$(starship init zsh)"
+(( $+commands[starship] )) && eval "$(starship init zsh)"
+
+# nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
 
 ################
 # Nvim Switcher
@@ -86,7 +112,7 @@ alias nvim-mylazyvim="NVIM_APPNAME=mylazyvim nvim"
 
 function nvims() {
   items=("default" "kickstart" "LazyVim" "NvChad" "AstroNvim" "ScratchNvim" "wh1ftyNvim")
-  config=$(printf "%s\n" "${items[@]}" | fzf --prompt=" Neovim Config  " --height=50% --layout=reverse --border --exit-0)
+  config=$(printf "%s\n" "${items[@]}" | fzf --prompt=" Neovim Config  " --height=50% --layout=reverse --border --exit-0)
   if [[ -z $config ]]; then
     echo "Nothing selected"
     return 0
@@ -111,15 +137,18 @@ alias ohmyzsh="nvim ~/.oh-my-zsh"
 alias zshconfig="nvim ~/.zshrc"
 alias nvimconfig="cd ~/.config/nvim"
 alias tmuxconfig="cd ~/.config/tmux"
-alias hyprlandconfig="cd ~/.config/hypr"
-alias waybarconfig="cd ~/.config/waybar"
-alias i3config="cd ~/.config/i3"
-alias touchpadconfig="cd /etc/X11/xorg.conf.d"
-alias desktopEntries="cd ~/.local/share/applications"
-alias settings="env XDG_CURRENT_DESKTOP=GNOME gnome-control-center"
-# alias code="code --enable-ozone --ozone-platform=wayland"
 alias game-selector="~/scripts/game-selector"
 alias screen-saver="~/scripts/screen-savers"
+
+if [[ $OSTYPE == linux* ]]; then
+  alias hyprlandconfig="cd ~/.config/hypr"
+  alias waybarconfig="cd ~/.config/waybar"
+  alias i3config="cd ~/.config/i3"
+  alias touchpadconfig="cd /etc/X11/xorg.conf.d"
+  alias desktopEntries="cd ~/.local/share/applications"
+  alias settings="env XDG_CURRENT_DESKTOP=GNOME gnome-control-center"
+  # alias code="code --enable-ozone --ozone-platform=wayland"
+fi
 
 
 ##########################
@@ -142,29 +171,7 @@ function fcd() {
 }
 
 
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# >>> mamba initialize >>>
-# !! Contents within this block are managed by 'mamba shell init' !!
-export MAMBA_EXE='/Users/dan/miniforge3/bin/mamba';
-export MAMBA_ROOT_PREFIX='/Users/dan/miniforge3';
-__mamba_setup="$("$MAMBA_EXE" shell hook --shell zsh --root-prefix "$MAMBA_ROOT_PREFIX" 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__mamba_setup"
-else
-    alias mamba="$MAMBA_EXE"  # Fallback on help from mamba activate
-fi
-unset __mamba_setup
-# <<< mamba initialize <<<
-
-export PATH="/Library/TeX/texbin:$PATH"
-
-# opencode
-export PATH=/Users/dan/.opencode/bin:$PATH
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-. "$HOME/.local/bin/env"
+###############################
+# Machine-local overrides/keys
+###############################
+[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
