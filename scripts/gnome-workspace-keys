@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+# Bind Super+<num> to switch to GNOME workspace <num>
+set -euo pipefail
+
+NUM_WORKSPACES=9
+
+# Fixed workspaces so Super+N always has a target
+gsettings set org.gnome.mutter dynamic-workspaces false
+gsettings set org.gnome.desktop.wm.preferences num-workspaces "$NUM_WORKSPACES"
+
+for i in $(seq 1 "$NUM_WORKSPACES"); do
+    # Free Super+N from the dash's "launch app N" shortcut
+    gsettings set org.gnome.shell.keybindings "switch-to-application-$i" "[]"
+    gsettings set org.gnome.desktop.wm.keybindings "switch-to-workspace-$i" "['<Super>$i']"
+done
+
+# Ctrl+Super+Left/Right to cycle workspaces (keeps GNOME defaults)
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-left \
+    "['<Control><Super>Left', '<Super>Page_Up', '<Super>KP_Prior', '<Super><Alt>Left', '<Control><Alt>Left']"
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-right \
+    "['<Control><Super>Right', '<Super>Page_Down', '<Super>KP_Next', '<Super><Alt>Right', '<Control><Alt>Right']"
+
+# Ubuntu Dock has its own Super+N "launch app N" hotkeys; disable them
+if gsettings list-keys org.gnome.shell.extensions.dash-to-dock &>/dev/null; then
+    gsettings set org.gnome.shell.extensions.dash-to-dock hot-keys false
+fi
